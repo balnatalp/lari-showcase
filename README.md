@@ -37,6 +37,11 @@ The one honest exception, written in the store text and the privacy policy:
 dictation uses the phone's own speech recogniser, which may process audio on its
 provider's servers.
 
+**Only the permissions the app needs.**
+Some plugins bring in storage permissions (`READ/WRITE_EXTERNAL_STORAGE`). Photos
+and videos live in the app's private folder, so the manifest removes those
+permissions explicitly with `tools:node="remove"`.
+
 **A local error log instead of Crashlytics or Sentry.**
 A crash reporter would have made the privacy statement false. Unhandled errors are
 written to a size-limited log in the app's private folder; the user can view,
@@ -81,6 +86,10 @@ human-readable copy.
   completes in the test's fake-time zone unless wrapped in `tester.runAsync`, and
   `pumpAndSettle()` times out on screens with endless animations. Both are
   documented for anyone writing the next test.
+- **A regression test that passed on the broken code.** In an error-log test, the
+  ASCII text of `StackTrace.current` diluted the input, so the faulty calculation
+  still came out positive: the test was green and the bug was there. Since then,
+  for every regression test I put the bug back and check that the test fails.
 - **Backups overwriting each other.** Every export was called `lari-backup.json`,
   so a new one replaced the old one in Downloads. Testers reported it; file names
   now carry the date and time.
