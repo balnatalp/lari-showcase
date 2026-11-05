@@ -9,14 +9,19 @@ oven, did I lock the door?* Built with Flutter, published on Google Play.
 > The full source code is private. This repository shows the decisions behind the
 > app and a few selected excerpts. Full code access is available on request.
 
+> **How it was built:** with AI coding agents (Claude Code) that I direct. I own the
+> requirements, the product and privacy decisions, the review, the testing on real devices and
+> the whole Google Play release.
+
+
 <img src="screenshots/1_home_en.png" width="200" alt="Home"> <img src="screenshots/2_alldone_en.png" width="200" alt="All done"> <img src="screenshots/3_onboarding_en.png" width="200" alt="Guide"> <img src="screenshots/4_work_en.png" width="200" alt="Work list">
 
 ## What it does
 
 - A separate checklist for each place: home, work, holiday home
 - "New day" clears every tick in one tap
-- A photo attached to an item, as proof for yourself (a short silent video comes
-  in version 1.2.0, currently in Play review)
+- A photo attached to an item, and a short silent video for each place, as proof
+  for yourself
 - Dictation instead of typing
 - Share the list as an image; export and import to move to a new phone
 - Four languages: English, Hungarian, Spanish, Chinese; light and dark theme;
@@ -71,7 +76,7 @@ Video recording was finished in the code, but the store listing and privacy poli
 did not mention it. I treated that as the release blocker: version 1.2.0 was
 submitted to Google Play only after the guide, the store texts in all four languages
 and the privacy policy described it (silent, one minute at most, deleted by "New
-day"). As of November 2026 it is in Play review; the live version is 1.0.1.
+day"). It is now live on Google Play.
 
 **Store texts from a single source.**
 The store texts existed twice and could drift apart. Now `fastlane/metadata` is the
@@ -117,9 +122,6 @@ human-readable copy.
 - **Closed testing on Google Play** before release, and the feedback acted on in
   version 1.0.1.
 - **Commit messages that explain why**, not only what changed.
-- **AI assistant:** I used an AI coding assistant. I set the requirements, made
-  the product and privacy decisions, reviewed the output and tested on real
-  devices.
 
 ## Known limitations
 
