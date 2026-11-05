@@ -15,7 +15,8 @@ oven, did I lock the door?* Built with Flutter, published on Google Play.
 
 - A separate checklist for each place: home, work, holiday home
 - "New day" clears every tick in one tap
-- A photo or a short silent video attached to an item, as proof for yourself
+- A photo attached to an item, as proof for yourself (a short silent video comes
+  in version 1.2.0, currently in Play review)
 - Dictation instead of typing
 - Share the list as an image; export and import to move to a new phone
 - Four languages: English, Hungarian, Spanish, Chinese; light and dark theme;
@@ -66,10 +67,11 @@ is a multiplier on Android's text scale, not a replacement, so someone who has
 already enlarged text on the phone does not lose it.
 
 **Video only when the documentation was ready.**
-Video recording was finished before it shipped, but the store listing and privacy
-policy did not mention it. I treated that as the release blocker: version 1.2.0
-went out only after the guide, the store texts in all four languages and the
-privacy policy described it (silent, one minute at most, deleted by "New day").
+Video recording was finished in the code, but the store listing and privacy policy
+did not mention it. I treated that as the release blocker: version 1.2.0 was
+submitted to Google Play only after the guide, the store texts in all four languages
+and the privacy policy described it (silent, one minute at most, deleted by "New
+day"). As of November 2026 it is in Play review; the live version is 1.0.1.
 
 **Store texts from a single source.**
 The store texts existed twice and could drift apart. Now `fastlane/metadata` is the
