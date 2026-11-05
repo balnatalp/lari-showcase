@@ -97,6 +97,21 @@ human-readable copy.
   ASCII text of `StackTrace.current` diluted the input, so the faulty calculation
   still came out positive: the test was green and the bug was there. Since then,
   for every regression test I put the bug back and check that the test fails.
+- **A test that silently did nothing.** In a widget test, a write to local storage
+  never completes, because the test runs on fake time: everything after the
+  `await` is skipped, and the test passes without testing anything. Found with
+  debug output. Rule since then: the storage layer is tested in plain `test()`
+  (real event loop), the UI in `testWidgets()`.
+- **A missing translation the check could not see.** The localisation test only
+  recognised direct `get('key')` calls, so a conditional
+  `get(playing ? 'videoPause' : 'play')` let a missing key through, and users would
+  have seen the raw key name. The check now scans the whole argument; on its first
+  run it found exactly one bug.
+- **A colour named `black` that was not black.** A theme getter called `black`
+  returns the text colour, which is almost white in dark mode. It caused unreadable
+  labels twice (photo viewer buttons, then the whole camera screen turned cream in
+  dark mode). Rule: coloured surfaces use `onLight`, neutral ones `onDark`, and the
+  camera screens use fixed colours instead of theme getters.
 - **Backups overwriting each other.** Every export was called `lari-backup.json`,
   so a new one replaced the old one in Downloads. Testers reported it; file names
   now carry the date and time.
